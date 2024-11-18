@@ -1,16 +1,13 @@
-import PropTypes from 'prop-types';
 import Layout from '../Layouts/Layout';
-import {motion} from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (
     <Layout>
       <h1>Home</h1>
-      <motion.div className="card bg-primary size-20" animate={{ x: 100 }} />
+      <div className='container'>
+        <Link to={`/projects/1`} className='btn btn-link'>Project</Link>
+      </div>
     </Layout>
   )
-}
-
-Home.propTypes = {
-  children: PropTypes.children,
 }
