@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 export default function MenuContent({side}) {
   return (
@@ -7,7 +8,7 @@ export default function MenuContent({side}) {
       {/* Navbar menu content here */}
       <li><a>EDUCATION</a></li>
       <li><a>EXPERIENCE</a></li>
-      <li><a>ABOUT</a></li>
+      <li><Link to={`/about`}>ABOUT</Link></li>
     </ul>
   )
 }

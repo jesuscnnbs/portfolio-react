@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import MenuContent from './components/MenuContent';
 import ThemeSwitcher from '../components/ThemeSwitcher';
+import { Link } from 'react-router-dom';
 
 export default function Layout({ children }) {
   return (
@@ -24,7 +25,7 @@ export default function Layout({ children }) {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2">Portfolio</div>
+         <div className="mx-2 flex-1 px-2"> <Link to={`/`}>Portfolio</Link></div>
           <ThemeSwitcher />
           <div className="hidden flex-none lg:block">
             <MenuContent />
