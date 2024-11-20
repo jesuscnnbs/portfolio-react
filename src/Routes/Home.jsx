@@ -1,13 +1,18 @@
 import Layout from '../Layouts/Layout';
-import { Link } from 'react-router-dom';
+import Hero from '../components/Home/Hero';
+import Timeline from '../components/Home/Timeline';
+import { motion, useScroll } from "framer-motion";
 
 export default function Home() {
+  const { scrollYProgress } = useScroll();
   return (
     <Layout>
-      <h1>Home</h1>
-      <div className='container'>
-        <Link to={`/projects/1`} className='btn btn-link'>Project</Link>
-      </div>
+      <motion.div
+        className="bg-primary fixed z-20 h-1 w-full left-0 right-0"
+        style={{ scaleX: scrollYProgress }}
+      />
+      <Hero />
+      <Timeline />
     </Layout>
   )
 }

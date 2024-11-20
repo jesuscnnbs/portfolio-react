@@ -1,9 +1,9 @@
 import Layout from '../Layouts/Layout';
 
-export default function Project() {
+export default function Dashboard() {
   return (
     <Layout>
-      <h1>Project</h1>
+      <h1>Dashboard</h1>
     </Layout>
   )
 }
