@@ -39,7 +39,7 @@ export default function Timeline() {
               clipRule="evenodd" />
           </svg>
         </div>
-        <div className="timeline-end mb-10">
+        <div className="timeline-start mb-10">
           <time className="font-mono italic">1998</time>
           <div className="text-lg font-black">iMac</div>
           iMac is a family of all-in-one Mac desktop computers designed and built by Apple Inc. It has
@@ -87,7 +87,7 @@ export default function Timeline() {
               clipRule="evenodd" />
           </svg>
         </div>
-        <div className="timeline-end mb-10">
+        <div className="timeline-start mb-10">
           <time className="font-mono italic">2007</time>
           <div className="text-lg font-black">iPhone</div>
           iPhone is a line of smartphones produced by Apple Inc. that use Apple's own iOS mobile

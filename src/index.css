@@ -2,9 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
-.box {
-  width: 100px;
-  height: 100px;
-  border-radius: 20px;
-  background: oklch(var(--a));
+@property --angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0deg;
 }
+
+@property --z {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@keyframes revolve {
+  from { 
+    --angle: 0deg;
+    --z: 0;
+  }
+  to {
+    --angle: 360deg;
+    --z: -1;
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    stroke-dashoffset: 330;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: oklch(var(--bc));
+  }
+}
+
+@layer components {
+  .solar-system {
+    @apply fixed h-full w-full;
+  }
+  .planet {
+    @apply shadow-xl absolute bg-gradient-to-tr from-primary to-secondary size-48 top-[50%] left-[50%] -translate-y-1/2 -translate-x-1/2 animate-[blobs_23s_ease-in-out_infinite_alternate];
+  }
+  [class*=satellite] {
+    @apply shadow absolute bg-gradient-to-tr from-secondary to-warning top-[50%] left-[50%];
+    --x-amplitude: 120px;
+    --y-amplitude: 40px;
+    --x: calc(cos(var(--angle)) * var(--x-amplitude) - 22px);
+    --y: calc(sin(var(--angle)) * var(--y-amplitude));
+    transform:
+      rotate(var(--rotation))
+      translate(var(--x), var(--y))
+      rotate(calc(var(--rotation) * -1));
+    z-index: calc(var(--z));
+    border-radius: 30% 60% 65% 35% / 55% 60% 30% 45%;
+    animation: blobs 8s ease-in-out infinite alternate, revolve 3s linear infinite;
+  }
+  .satellite_1 {
+    @apply size-10;
+    --rotation: 0deg;
+  }
+  .svg-title path{
+    fill: transparent;
+    stroke: oklch(var(--bc));
+    stroke-width: 1;
+    stroke-dasharray: 330;
+    stroke-dashoffset: 0;
+    animation: textAnimation 4s ease-in-out 1 forwards;
+  }
+}
+
+@layer utilities {
+  .glass-box {
+    @apply shadow-md shadow-base-content/20 backdrop-blur-md bg-base-100/40 border-solid border border-base-content/40;
+  }
+  .glow {
+    @apply drop-shadow-[0px_0px_17px_oklch(var(--bc))];
+  }
+}
+
+@keyframes blobs {
+  0% { border-radius: 30% 60% 65% 35% / 55% 60% 30% 45%; }
+  10% { border-radius: 70% 30% 50% 50% / 65% 50% 50% 35%; }
+  20% { border-radius: 45% 55% 35% 65% / 30% 40% 60% 70%; }
+  30% { border-radius: 70% 30% 60% 40% / 35% 70% 30% 65%; }
+  40% { border-radius: 60% 40% 55% 45% / 28% 35% 70% 72%; }
+  50% { border-radius: 35% 65% 70% 30% / 60% 30% 70% 40%; }
+  60% { border-radius: 30% 70% 35% 65% / 70% 55% 45% 30%; }
+  70% { border-radius: 40% 60% 60% 40% / 70% 60% 40% 30%; }
+  80% { border-radius: 50% 50% 40% 60% / 40% 35% 65% 60%; }
+  90% { border-radius: 30% 70% 65% 35% / 45% 55% 45% 55%; }
+  100% { border-radius: 65% 35% 30% 70% / 60% 70% 30% 40%; }
+}
+

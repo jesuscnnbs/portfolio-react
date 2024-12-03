@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{html,js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
@@ -10,6 +10,8 @@ export default {
   plugins: [
     // eslint-disable-next-line no-undef
     require('daisyui'),
+    // eslint-disable-next-line no-undef
+    require('@tailwindcss/typography'),
   ],
   daisyui: {
     themes: ["light", "dark"], // Enable the light and dark themes
